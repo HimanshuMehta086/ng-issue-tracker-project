@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Issue } from '../_models/issue.model';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  issues: Issue[] = [
+  private issues: Issue[] = [
     {
       category: 'Production',
       createdOn: new Date(2019, 1, 10),
@@ -49,6 +50,8 @@ export class DataService {
       severity: 8
     }
   ];
+
+  issues$ = of(this.issues);
 
   constructor() {}
 }

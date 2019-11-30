@@ -25,7 +25,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let issue of issues">
+    <tr *ngFor="let issue of issues$ | async">
       <td>
         {{ issue.id }}
       </td>

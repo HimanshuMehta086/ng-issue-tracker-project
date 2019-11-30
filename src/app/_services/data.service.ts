@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Issue } from '../_models/issue.model';
 import { of } from 'rxjs';
+import { Summary } from '../_models/summary.model';
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,29 @@ export class DataService {
   ];
 
   issues$ = of(this.issues);
+  summary$ = of(this.summary);
 
   constructor() {}
+
+  private get summary(): Summary {
+    const summary: Summary = {
+      nIssues: 0,
+      nResolved: 0,
+      nEscalated: 0
+    };
+
+    this.issues.forEach(el => {
+      summary.nIssues++;
+
+      if (el.resolved) {
+        summary.nResolved++;
+      }
+
+      if (el.escalated) {
+        summary.nEscalated++;
+      }
+    });
+
+    return summary;
+  }
 }

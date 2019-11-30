@@ -1,0 +1,33 @@
+<ng-container *ngIf="summary$ | async as summary">
+  <table class="table table-bordered table-secondary mr-1">
+    <tbody>
+      <tr>
+        <td colspan="2" class="font-weight-bold text-center">Summary</td>
+      </tr>
+      <tr>
+        <td>
+          Total
+        </td>
+        <td>
+          {{ summary.nIssues }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Resolved
+        </td>
+        <td>
+          {{ summary.nResolved }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Resolved
+        </td>
+        <td>
+          {{ summary.nEscalated }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>

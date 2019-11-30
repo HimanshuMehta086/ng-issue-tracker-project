@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Issue } from '../_models/issue.model';
+import { DataService } from '../_services/data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,11 @@ import { Issue } from '../_models/issue.model';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  @Input() issues: Issue[];
+  issues: Issue[];
 
-  constructor() {}
+  constructor(private dataService: DataService) {
+    this.issues = this.dataService.issues;
+  }
 
   ngOnInit() {}
 }
